@@ -12,6 +12,16 @@ function App() {
 //const URLfrontend="http://localhost:3000/"
 const URLfrontend="https://dogs-page.onrender.com"
 
+const [showCustomAlert, setShowCustomAlert] = useState(false);
+
+const openCustomAlert = () => {
+  setShowCustomAlert(true);
+};
+
+const closeCustomAlert = () => {
+   setShowCustomAlert(false);
+ };
+
 
 
 
@@ -24,7 +34,7 @@ const URLfrontend="https://dogs-page.onrender.com"
         <Route exact path="/" component={Form} />  
         <Route exact path="/home" render={(props) => <Home {...props} URLfrontend={URLfrontend} />}/>
         <Route exact path="/detail/:id" component={Detail} />
-        <Route exact path="/create" component={Create} />
+        <Route exact path="/create" render={(props) => <Create {...props} />}/>
         </Switch>
       </div>
     </Router>

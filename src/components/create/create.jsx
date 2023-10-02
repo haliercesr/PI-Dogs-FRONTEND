@@ -6,9 +6,11 @@ import { useSelector, useDispatch} from 'react-redux';
 import { getDogs } from '../redux/actions/actions';
 import validations from './validations';
 import axios from 'axios';
+import Alert from '../alert/alert';
 
 
 function Create(props) {
+   const {closeCustomAlert, showCustomAlert}=props
    //const URL = 'http://localhost:3001'
    const URL='https://dogs-server-c51j.onrender.com'
    const history = useHistory();
