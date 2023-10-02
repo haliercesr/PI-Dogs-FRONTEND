@@ -10,7 +10,7 @@ import Searchbar from './components/searchbar/searchbar';
 function App() {
 
 //const URLfrontend="http://localhost:3000/"
-const URLfrontend="https://dogs-page.onrender.com"
+const URLfrontend="https://dogs-server-c51j.onrender.com/"
 
 
 
