@@ -9,6 +9,7 @@ export const getDogs = () => {
     return async function (dispatch) {
 
         try {
+            console.log(`${URL}/dogs`)
             const { data } = await axios.get(`${URL}/dogs`)
 
             const data1=filtrarDogsCreados(data) //filtro los datos del server para los perros creados en la BBD, TENGO QUE HACERLO EN EL SERVER Y NO EN EL FONTEND
