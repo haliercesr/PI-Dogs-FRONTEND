@@ -18,7 +18,7 @@ function Home(props) {
     const allDogsFilter = useSelector(state => state.allDogsFilter)
     const dispatch = useDispatch()
     const [numberpage, setNumberpage] = useState(1)
-    const [num, setNum] = useState(1)
+    const [num, setNum] = useState(0)
     const [temper, setTemper] = useState([])
 
     const nextpage = () => {
