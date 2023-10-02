@@ -154,11 +154,11 @@ function Home(props) {
         </div>
         {num !== 0 && allDogs.length === 0 && queryState === false && (<>
             <h2>No hay resultados</h2>
-            <a href={`${URLfrontend}home`} onClick={inicio}>Volver al inicio</a>
+            <a href={`${URLfrontend}/home`} onClick={inicio}>Volver al inicio</a>
             </>)}
         {num !== 0 && searchDogs.length === 0 && queryState === true && (<>
             <h2>No hay resultados</h2>
-            <a href={`${URLfrontend}home`} onClick={inicio}>Volver al inicio</a>
+            <a href={`${URLfrontend}/home`} onClick={inicio}>Volver al inicio</a>
             </>)}
 
         <div className={style.Home}>
