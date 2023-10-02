@@ -10,7 +10,6 @@ import Alert from '../alert/alert';
 
 
 function Create(props) {
-   const {closeCustomAlert, showCustomAlert}=props
    //const URL = 'http://localhost:3001'
    const URL='https://dogs-server-c51j.onrender.com'
    const history = useHistory();
@@ -31,6 +30,36 @@ function Create(props) {
 
       })
    const [errors, setErrors] = useState({})
+
+   const [Message, setMessage] = useState({
+      ShowCustomAlert1: false,
+      ShowCustomAlert2: false,
+      ShowCustomAlert3: false,
+      message1: "El perro se creo exitosamente!",
+      message2: "El perro ya se encuentra creado, por favor elije otro nombre",
+      message3: "El formulario contiene errores",
+
+  });
+
+  const openCustomAlert = (numMessage) => {
+   if(numMessage === 1)setMessage({ ...Message, ShowCustomAlert1: true })
+   if(numMessage === 2)setMessage({ ...Message, ShowCustomAlert2: true })
+   if(numMessage === 3)setMessage({ ...Message, ShowCustomAlert3: true })
+
+};
+
+const closeCustomAlert = () => {
+   setMessage({ ...Message, ShowCustomAlert1: false })
+  
+};
+
+const closeCustomAlert1 = () => {
+   setMessage({ ...Message, ShowCustomAlert2: false })
+};
+
+const closeCustomAlert2 = () => {
+   setMessage({ ...Message, ShowCustomAlert3: false })
+};
 
    useEffect(() => {
 
@@ -65,17 +94,17 @@ function Create(props) {
             
             console.log(data)
             if (data) {
-               window.alert("El perro se creo exitosamente")
+               openCustomAlert(1)
                dispatch(getDogs())
 
             } else {
-               window.alert("El perro ya se encuentra creado, por favor elije otro nombre")
+               openCustomAlert(2)
 
             }
 
 
          } else if(user.name!==''){ 
-            window.alert("El formulario contiene errores") 
+            openCustomAlert(3)
          }
 
 
@@ -140,6 +169,18 @@ function Create(props) {
      };*/
 
    return (<div className={style.containerCreate}>
+       {Message.ShowCustomAlert1 ? <Alert
+            message="El perro se creo exitosamente!"
+            onClose={closeCustomAlert}
+        /> : null}
+        {Message.ShowCustomAlert2 ? <Alert
+            message="El perro ya se encuentra creado, por favor elije otro nombre"
+            onClose={closeCustomAlert1}
+        /> : null}
+        {Message.ShowCustomAlert3 ? <Alert
+            message="El formulario contiene errores"
+            onClose={closeCustomAlert2}
+        /> : null}
       <form className={style.RegForms} onSubmit={handleSubmit}>
 
          <div className={style.FormConteiner}>
