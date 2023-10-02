@@ -9,7 +9,8 @@ import axios from 'axios';
 
 
 function Create(props) {
-   const URL = 'http://localhost:3001'
+   //const URL = 'http://localhost:3001'
+   const URL='https://dogs-page.onrender.com'
    const history = useHistory();
    const dispatch = useDispatch()
    const allDogsFilter = useSelector(state => state.allDogsFilter)

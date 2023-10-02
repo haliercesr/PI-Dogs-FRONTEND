@@ -9,7 +9,10 @@ import Searchbar from './components/searchbar/searchbar';
 
 function App() {
 
-const URLfrontend="http://localhost:3000/"
+//const URLfrontend="http://localhost:3000/"
+const URLfrontend="https://dogs-page.onrender.com"
+
+
 
 
   return (                                         //Coloco "exact" para ue la ruta sea exacta, caso contrario si tengo:  <Route path="/" component={Form} />, esto significa que cuando la URL sea / o cualquier otra ruta que comience con /, el componente Form se renderizará porque la coincidencia es parcial.

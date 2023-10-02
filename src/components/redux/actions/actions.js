@@ -2,7 +2,8 @@ import { GET_DOGS, SEARCH_DOGS, QUERY_DOGS, ORDER, FILTER, TEMPERAMENTS, FILTERb
 import axios from 'axios';
 const {filtrarDogsCreados}=require('../../utils/filtrarDogsCreados')
 
-const URL = 'http://localhost:3001'
+//const URL = 'http://localhost:3001'
+const URL = 'https://dogs-page.onrender.com'
 
 export const getDogs = () => {
     return async function (dispatch) {
