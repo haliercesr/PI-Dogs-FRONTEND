@@ -3,7 +3,7 @@ import axios from 'axios';
 const {filtrarDogsCreados}=require('../../utils/filtrarDogsCreados')
 
 //const URL = 'http://localhost:3001'
-const URL = 'https://dogs-server-c51j.onrender.com/'
+const URL = 'https://dogs-server-c51j.onrender.com'
 
 export const getDogs = () => {
     return async function (dispatch) {
