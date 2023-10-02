@@ -1,0 +1,18 @@
+:root{
+
+    /* form */
+    --color-button: #c7971485;
+    --color-titulos: #e5e5e5 ;
+    --color-subtitulos:  #c6c5c6;
+  
+    /* Fuentes */
+    --fuente-titulos: 'Poppins', sans-serif;
+  
+    /* Paneles */
+    --color-panel:  #100020 ;
+  
+    /* Color principal */
+    --color-principal:  #c267fd ;
+  
+  }
+  

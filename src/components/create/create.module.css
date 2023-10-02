@@ -1,0 +1,266 @@
+@media only screen and (min-width: 200px) {
+   
+    .containerCreate{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-image: url('../../images/perros.png');
+        background-repeat: no-repeat;
+        background-size: cover ;
+        background-attachment: fixed;
+       
+    }
+    
+    .FormConteiner {
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    
+    }
+
+    .inputsConteiner {
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    
+    }
+
+    .temSelect{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .listaTemps1{
+        display: flex;
+        align-items: flex-start;
+        margin-left:22px;
+    }
+
+    .listaTemps2{
+        display: flex;
+        align-items: flex-start;
+
+    }
+
+
+    
+    .RegForms {
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(24, 24, 24, 0.5);
+        color: aliceblue;
+        border-radius: 15px;
+    }
+
+    .p1 {
+        margin: 0px;
+        color: rgb(255, 4, 4);
+        font-size: 1em;
+        font-weight: 600
+    }
+    
+    .labelReg{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row
+    }
+    
+    .labelform1 {
+        margin-top: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .labelform11 {
+        margin-top: 7px;
+        margin-bottom: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    
+    }
+    
+    .label1 {
+        margin: 3px;
+        font-size: 17px;
+    
+    }
+    
+    .inputNombre {
+        border-radius: 5px;
+        height: 25px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 123px;
+    }
+
+    .input1 {
+        border-radius: 5px;
+        height: 25px;
+        width: 40px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    .añosDeVida {
+        border-radius: 5px;
+        height: 25px;
+        width: 95px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .linkImagen {
+        border-radius: 5px;
+        height: 25px;
+        width: 130px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    .label2 {
+        margin: 3px;
+        font-size: 17px;
+    }
+    
+    .forms button {
+        margin-top: 7px;
+        width: 60px;
+        height: 25px;
+        border-radius: 5px;
+        background-color: cornflowerblue;
+        border: 0px;
+        color: white;
+        font-weight: 600
+    }
+    
+    .buttonSubmit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    
+    }
+    
+    
+    .buttonSubmit button {
+        width: 90px;
+        height: 25px;
+        border-radius: 5px;
+        background-image: linear-gradient(to top, #2f2f2f, #212121, #4a4c4a, #4c4c4c, #585858);
+        border: 0px;
+        color: white;
+        font-weight: 600;
+        font-size: 15.6px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .buttonSubmit button:hover {
+        color:rgb(185, 182, 182)
+     }
+     
+     .buttonSubmit button:active {
+         transform: translateY(2px) translateX(1px);
+         box-shadow: 0 0 0 0 black;
+     }
+    
+    .spanButton{
+        background-color: transparent;
+        color: white;
+        border: transparent;
+        cursor: pointer;
+    }
+
+    .RegForms span {
+        margin:10px;
+    }
+   
+}
+
+@media only screen and (min-width: 600px) {
+
+    .containerCreate{
+        background-image: url('../../images/0e92ccc673d484b06c68044268e40a9d.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    
+    }
+
+
+    .FormConteiner {
+    
+        flex-direction: row;
+        align-items: flex-start;
+    
+    }
+
+    .inputsConteiner {
+    
+        flex-direction: column;
+     
+    }
+
+    .listTemperaments{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .listaUl{
+        padding-left: 0px;
+    }
+
+    .listaTemps1{
+        margin-left: 0px;
+    }
+
+}
+
+/*Extra large devices(large laptops and desktops, 1200px and up)*/
+@media only screen and (min-width: 1200px) {
+    
+    .containerCreate{
+        display: flex;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    
+    }
+
+    .listTemperaments{
+        flex-wrap: wrap; /* Permite el ajuste automático al ancho */
+        max-height: 400px;
+    }
+
+    .RegForms {
+       width: 900px;
+        
+       
+    }
+
+    .inputsConteiner {
+    width: 500px;
+    align-items: center;
+     
+    }
+
+
+
+}

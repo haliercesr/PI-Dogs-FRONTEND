@@ -1,0 +1,95 @@
+@import '../../styles/variables.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;0,900;1,900&display=swap');
+
+/*Extra small devices(phones, 600px and down)*/
+@media only screen and (min-width: 200px) {
+.containerForm {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../images/perros.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+
+}
+
+.Title{
+  display: flex;
+  color: white;
+  width: 90%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.Title h1{
+  font-size: 40px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 800;
+  margin: 0px;
+}
+
+.buttonForm {
+  background-color: var(--color-button);
+  color: white; 
+  border: none;
+border-radius: 20px;
+  padding: 13px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+  
+
+  .buttonForm:hover {
+    background-color: #94721485;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .buttonForm:not(:hover){           /*PARA CUANDO EL BOTON SE ALEJA DEL MOUSE*/
+    background-color: #c7971485;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+    .containerForm {
+     
+        background-image: url('../../images/perro_4_1258x630.jpeg');
+    
+    }
+
+    .Title{
+      justify-content: flex-start;
+      align-items: flex-start;
+      
+    }
+
+}
+
+/*Extra large devices(large laptops and desktops, 1200px and up)*/
+@media only screen and (min-width: 1200px) {
+
+  .Title h1{
+    font-size: 70px;
+    height: 85px;
+    margin-bottom:0px;
+    margin-top: 0px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+  }
+
+  .Title h2{
+    margin-top:25px;
+    margin-bottom:20px;
+    font-weight: 530;
+    
+  }
+
+  
+}

@@ -1,0 +1,203 @@
+@media only screen and (min-width: 200px) {
+   
+
+    .DivCard {
+        display: block;
+        flex-direction: column;
+        margin :15px;
+        width: 215px;
+        background-image: linear-gradient(to right top, #c6551c, #cb6f23, #cf8730, #d39e41, #d6b456);
+        border-radius: 15px;
+        box-shadow: 15px 12px 21px -13px #000000e7;
+        -webkit-box-shadow: 15px 12px 21px -13px rgba(0, 0, 0, 0.726);
+        -moz-box-shadow: 15px 12px 21px -13px rgba(0, 0, 0, 0.685);
+        text-decoration: none;
+    }
+
+    .DivCard a{
+        text-decoration: none; 
+        width: 100%;
+    }
+
+    .Divtext{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Divtext h1{
+        font-size: 15px;
+        color: rgb(255, 255, 255);
+
+    }
+
+    .Divtext h2{
+        font-size: 10px;
+        color: #575756;
+        margin:7px;
+        text-decoration: underline;
+
+    }
+
+    .Divtext h3{
+        font-size: 10px;
+        color: rgb(255, 255, 255);
+        margin:7px;
+
+    }
+
+
+
+    .Divimg {
+        display: block;
+        width: 215px;
+        height: 200px;
+    }
+
+    .Divimg img {
+
+        width: 215px;
+        height: 200px;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+    }
+
+    .CardId {
+        margin-right: 120px;
+    }
+
+
+
+}
+
+@media only screen and (min-width: 600px) {
+    .DivCard {
+        display: flex;
+        flex-direction: row;
+        margin-top: 15px;
+        width: 500px;
+        height: 190px;
+        background-color: rgba(49, 48, 48, 0.5);
+        border-radius: 15px;
+
+    }
+
+    .DivCard a{
+        display: flex;
+        flex-direction: row;
+    }
+
+    
+
+    .Divimg {
+        display: block;
+        width: 250px;
+        height: 190px;
+    }
+
+    .Divimg img {
+
+        width: 250px;
+        height: 190px;
+        border-top-right-radius: 0px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+
+    .Divtext a {
+        text-decoration: none;
+
+    }
+
+    .Divtext h1{
+        font-size: 25px;
+
+    }
+
+    .Divtext h2{
+        font-size: 15px;
+        margin:4px;
+
+    }
+
+    .Divtext h3{
+        font-size: 15px;
+        margin:4px;
+
+    }
+
+   
+
+
+}
+
+/*Extra large devices(large laptops and desktops, 1200px and up)*/
+@media only screen and (min-width: 1200px) {
+   
+    .DivCard {
+        display: flex;
+        flex-direction: row;
+        width: 900px;
+        height: 300px;
+        background-color: rgba(49, 48, 48, 0.5);
+        border-radius: 15px;
+
+    }
+
+    .DivCard a:hover {
+        background-color: rgba(30, 30, 30, 0.2);
+        width: 900px;
+        height: 300px;
+        border-radius: 15px;
+        transition: all 0.3s ease-in-out;
+
+
+    }
+
+    .Divimg {
+        display: block;
+        width: 720px;
+        height: 100%;
+        overflow: hidden; /* Esta propiedad para ocultar el desbordamiento */
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+      }
+      
+      .Divimg img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        width: 100%;
+        height: 100%; 
+        border-top-right-radius: 0px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        object-fit: cover;
+        transition: transform 0.3s; /* Agrega una transición para la animación de escala */
+      }
+      
+      .DivCard a:hover img {
+        transform: scale(1.1);
+       
+      }
+
+    .Divtext h1{
+        font-size: 30px;
+
+    }
+
+    .Divtext h2{
+        font-size: 20px;
+        margin:9px;
+
+    }
+
+    .Divtext h3{
+        font-size: 20px;
+        margin:9px;
+
+    }
+
+}
