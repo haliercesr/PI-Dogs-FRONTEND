@@ -32,41 +32,26 @@ function Create(props) {
    const [errors, setErrors] = useState({})
 
    const [Message, setMessage] = useState({
-      ShowCustomAlert1: false,
-      ShowCustomAlert2: false,
-      ShowCustomAlert3: false,
-      message1: "El perro se creo exitosamente!",
-      message2: "El perro ya se encuentra creado, por favor elije otro nombre",
-      message3: "El formulario contiene errores",
-
+      ShowCustomAlert: false,
   });
 
-  const openCustomAlert = (numMessage) => {
-   if(numMessage === 1)setMessage({ ...Message, ShowCustomAlert1: true })
-   if(numMessage === 2)setMessage({ ...Message, ShowCustomAlert2: true })
-   if(numMessage === 3)setMessage({ ...Message, ShowCustomAlert3: true })
+  function openCustomAlert (message){
+   setMessage({ ...Message, ShowCustomAlert: true })
+   return(Message.ShowCustomAlert && <Alert
+   message={message}
+   onClose={closeCustomAlert}
+/> )}
 
-};
+
 
 const closeCustomAlert = () => {
-   setMessage({ ...Message, ShowCustomAlert1: false })
+   setMessage({ ...Message, ShowCustomAlert: false })
   
-};
-
-const closeCustomAlert1 = () => {
-   setMessage({ ...Message, ShowCustomAlert2: false })
-};
-
-const closeCustomAlert2 = () => {
-   setMessage({ ...Message, ShowCustomAlert3: false })
 };
 
    useEffect(() => {
 
-
-
       SetAllTemperaments(allDogsFilter)
-
 
    }, []);
 
@@ -94,17 +79,17 @@ const closeCustomAlert2 = () => {
             
             console.log(data)
             if (data) {
-               openCustomAlert(1)
+               openCustomAlert("El perro se creo exitosamente!")
                dispatch(getDogs())
 
             } else {
-               openCustomAlert(2)
+               openCustomAlert("El perro ya se encuentra creado, por favor elije otro nombre")
 
             }
 
 
          } else if(user.name!==''){ 
-            openCustomAlert(3)
+            openCustomAlert("El formulario contiene errores")
          }
 
 
@@ -169,18 +154,6 @@ const closeCustomAlert2 = () => {
      };*/
 
    return (<div className={style.containerCreate}>
-       {Message.ShowCustomAlert1 ? <Alert
-            message="El perro se creo exitosamente!"
-            onClose={closeCustomAlert}
-        /> : null}
-        {Message.ShowCustomAlert2 ? <Alert
-            message="El perro ya se encuentra creado, por favor elije otro nombre"
-            onClose={closeCustomAlert1}
-        /> : null}
-        {Message.ShowCustomAlert3 ? <Alert
-            message="El formulario contiene errores"
-            onClose={closeCustomAlert2}
-        /> : null}
       <form className={style.RegForms} onSubmit={handleSubmit}>
 
          <div className={style.FormConteiner}>
