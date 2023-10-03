@@ -59,7 +59,7 @@ function Create(props) {
 
 
       try {
-         if (user.name === '') window.alert('Por favor completar el formulario')
+         if (user.name === '') openCustomAlert('Por favor completar el formulario')
 
          const { name, heightMin, heightMax, weightMin, weightMax, life_span, selectedTemperaments, image } = user
          const valuesArray = Object.values(errors).join() //tomo los valores de errors
