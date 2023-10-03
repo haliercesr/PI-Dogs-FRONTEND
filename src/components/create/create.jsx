@@ -1,8 +1,8 @@
 import style from "../create/create.module.css"
 import { useState, useEffect } from "react"
 import Loading from '../loading/loading'
-import { withRouter,useHistory, Link } from 'react-router-dom';
-import { useSelector, useDispatch} from 'react-redux';
+import { withRouter, useHistory, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { getDogs } from '../redux/actions/actions';
 import validations from './validations';
 import axios from 'axios';
@@ -11,7 +11,7 @@ import Alert from '../alert/alert';
 
 function Create(props) {
    //const URL = 'http://localhost:3001'
-   const URL='https://dogs-server-c51j.onrender.com'
+   const URL = 'https://dogs-server-c51j.onrender.com'
    const history = useHistory();
    const dispatch = useDispatch()
    const allDogsFilter = useSelector(state => state.allDogsFilter)
@@ -33,21 +33,20 @@ function Create(props) {
 
    const [Message, setMessage] = useState({
       ShowCustomAlert: false,
-  });
+      message: "",
+   });
 
-  function openCustomAlert (message){
-   setMessage({ ...Message, ShowCustomAlert: true })
-   return(Message.ShowCustomAlert && <Alert
-   message={message}
-   onClose={closeCustomAlert}
-/> )}
-
+   function openCustomAlert(message) {
+      setMessage({ ...Message, ShowCustomAlert: true })
+      setMessage({ ...Message, message: message })
+   }
 
 
-const closeCustomAlert = () => {
-   setMessage({ ...Message, ShowCustomAlert: false })
-  
-};
+
+   const closeCustomAlert = () => {
+      setMessage({ ...Message, ShowCustomAlert: false })
+
+   };
 
    useEffect(() => {
 
@@ -57,15 +56,15 @@ const closeCustomAlert = () => {
 
    const handleSubmit = async (e) => {
       e.preventDefault()   //evitar que se recarge la pagina 
-   
+
 
       try {
-         if(user.name==='')window.alert('Por favor completar el formulario')
+         if (user.name === '') window.alert('Por favor completar el formulario')
 
          const { name, heightMin, heightMax, weightMin, weightMax, life_span, selectedTemperaments, image } = user
          const valuesArray = Object.values(errors).join() //tomo los valores de errors
-         if (valuesArray.length === 5 ) {
-            
+         if (valuesArray.length === 5) {
+
             let userSubmit = {
                name,
                height: [Number(heightMin), Number(heightMax)],
@@ -75,8 +74,8 @@ const closeCustomAlert = () => {
                selectedTemperaments,
             }
 
-            const {data} = await axios.post(`${URL}/dogs/`, userSubmit)
-            
+            const { data } = await axios.post(`${URL}/dogs/`, userSubmit)
+
             console.log(data)
             if (data) {
                openCustomAlert("El perro se creo exitosamente!")
@@ -88,7 +87,7 @@ const closeCustomAlert = () => {
             }
 
 
-         } else if(user.name!==''){ 
+         } else if (user.name !== '') {
             openCustomAlert("El formulario contiene errores")
          }
 
@@ -105,7 +104,7 @@ const closeCustomAlert = () => {
       const name = e.target.name
       setData({ ...user, [name]: property })
       setErrors(validations({ ...user, [name]: property }))
-     
+
 
       if (e.target.type === "checkbox") {
          if (user.selectedTemperaments.includes(property)) {
@@ -125,10 +124,10 @@ const closeCustomAlert = () => {
    }
 
    const volverHome = () => {
-     
+
       history.push('/home');
-      
-    };
+
+   };
 
 
 
@@ -154,6 +153,10 @@ const closeCustomAlert = () => {
      };*/
 
    return (<div className={style.containerCreate}>
+      {Message.ShowCustomAlert && <Alert
+         message={Message.message}
+         onClose={closeCustomAlert}
+      />}
       <form className={style.RegForms} onSubmit={handleSubmit}>
 
          <div className={style.FormConteiner}>
@@ -230,7 +233,7 @@ const closeCustomAlert = () => {
          </div>
          <span ><button onClick={volverHome} className={style.spanButton}><u>Volver al inicio</u></button></span>
       </form >
-     
+
 
    </div >)
 }
