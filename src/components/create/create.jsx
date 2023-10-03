@@ -158,6 +158,7 @@ function Create(props) {
      };*/
 
    return (<div className={style.containerCreate}>
+      {consoe.log(Message.ShowCustomAlert)}
       { Message.ShowCustomAlert && <Alert
          message="Message.message"
          onClose={closeCustomAlert}
