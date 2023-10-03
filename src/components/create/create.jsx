@@ -153,7 +153,7 @@ function Create(props) {
      };*/
 
    return (<div className={style.containerCreate}>
-      {Message.ShowCustomAlert && <Alert
+      { <Alert
          message={Message.message}
          onClose={closeCustomAlert}
       />}
