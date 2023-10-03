@@ -159,7 +159,7 @@ function Create(props) {
 
    return (<div className={style.containerCreate}>
       { Message.ShowCustomAlert && <Alert
-         message={Message.message}
+         message="Message.message"
          onClose={closeCustomAlert}
       />}
       <form className={style.RegForms} onSubmit={handleSubmit}>
