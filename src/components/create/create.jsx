@@ -38,6 +38,7 @@ function Create(props) {
 
    function openCustomAlert(string) {
       setMessage({ ...Message,ShowCustomAlert: true })
+      setMessage({ ...Message, message: string })
       
    }
 
@@ -45,6 +46,7 @@ function Create(props) {
 
    const closeCustomAlert = () => {
       setMessage({ ...Message, ShowCustomAlert: false })
+      
 
    };
 
