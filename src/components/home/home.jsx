@@ -91,8 +91,7 @@ function Home(props) {
     }
 
     function handleOrder(e) {
-        if (queryState===true && searchDogs.length===0) return <h2>No hay resultados</h2>
-        if (queryState===false && allDogs.length===0) return <h2>No hay resultados</h2>
+       
         const types = queryState ? "searchDogs" : "allDogs"
         const evento = e.target.value
         if (evento === 'A' || evento === 'D') dispatch(orderDogs([evento, "name", types]))
