@@ -72,7 +72,7 @@ function Home(props) {
         setTemper(allDogsFilter)
         
 
-    }, [allDogsFilter,location,queryState,searchDogs]);
+    }, [allDogsFilter,location,queryState,searchDogs,num]);
 
        
  
