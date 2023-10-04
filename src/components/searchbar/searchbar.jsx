@@ -3,6 +3,7 @@ import './searchbar.css';
 import { withRouter,useHistory } from 'react-router-dom';
 import { searchDogs,queryDogs } from '../redux/actions/actions';
 import { useDispatch } from 'react-redux';
+import Alert from '../alert/alert';
 
 function SearchBar(props) {
   const { location } = props;
@@ -10,6 +11,23 @@ function SearchBar(props) {
   const [query, setQuery] = useState('');
   const history = useHistory();
   const dispatch = useDispatch()
+
+  const [Message, setMessage] = useState({
+    ShowCustomAlert: false,
+    message: "",
+ });
+
+ function openCustomAlert() {
+    console.log(Message.message)
+  return <Alert
+  message={Message.message}
+  onClose={closeCustomAlert}
+/>    
+ }
+
+ const closeCustomAlert = () => {
+    setMessage({ ...Message, ShowCustomAlert: false })
+ };
 
   useEffect(() => { 
 
@@ -20,8 +38,10 @@ function SearchBar(props) {
   };
 
   const handleSearch = () => {
+    try{
     dispatch(searchDogs(query));
     dispatch(queryDogs(true))
+    }catch(error){setMessage({ ShowCustomAlert: true, message: error.message })}
   };
 
   const backHome = () => {
@@ -37,6 +57,7 @@ function SearchBar(props) {
   };
 
   return (<>
+      {Message.ShowCustomAlert===true && openCustomAlert()}
     {pathname==='/home'?<div className="search-bar-container">
     <button onClick={create} className="search-button">
         Create

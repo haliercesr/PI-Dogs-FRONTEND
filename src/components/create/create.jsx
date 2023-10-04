@@ -52,8 +52,10 @@ function Create(props) {
    };
 
    useEffect(() => {
-
+   
+   try{
       SetAllTemperaments(allDogsFilter)
+   }catch(error){setMessage({ ShowCustomAlert: true, message: error.message })}
 
    }, [Message]);
 

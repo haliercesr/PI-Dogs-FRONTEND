@@ -1,13 +1,12 @@
 import style from '../home/home.module.css';
 import { withRouter } from 'react-router-dom';
-import Searchbar from '../searchbar/searchbar'
 import { useSelector } from 'react-redux';
 import { getDogs, orderDogs, filterDogs, getTemperaments,filterApi } from '../redux/actions/actions';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Card from '../card/card'
 import LoadingComponent from '../loading/loading';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import Alert from '../alert/alert';
 
 function Home(props) {
     const { location, URLfrontend } = props;
@@ -20,14 +19,29 @@ function Home(props) {
     const [numberpage, setNumberpage] = useState(1)
     const [num, setNum] = useState(0)
     const [temper, setTemper] = useState([])
+    const [Message, setMessage] = useState({
+        ShowCustomAlert: false,
+        message: "",
+     });
+
+     function openCustomAlert() {
+        console.log(Message.message)
+      return <Alert
+      message={Message.message}
+      onClose={closeCustomAlert}
+   />    
+     }
+  
+  
+  
+     const closeCustomAlert = () => {
+        setMessage({ ...Message, ShowCustomAlert: false })
+     };
 
     const nextpage = () => {
-
         setNumberpage(numberpage + 1)
         window.scrollTo({ top: 0, behavior: 'auto' })                   //la funcion scrollTo de windows me lllea a la parte superior y con de forma instantanea con behavior:auto
     }
-
-
 
     const prevpage = () => {
         setNumberpage(numberpage - 1)
@@ -49,13 +63,12 @@ function Home(props) {
 
     useEffect(() => {
         //si lo pongo directamente en el return me da error porque es una funcion asincronica y tarda en completarse
+        try{
         allDogs.length===0 && dispatch(getDogs())
         // Obtener la lista de temperamentos
         temper.length===0 && dispatch(getTemperaments())
+        }catch(error){ (setMessage({ ShowCustomAlert: true, message: error.message }))}
         setTemper(allDogsFilter)
-       console.log(queryState)
-       console.log(num)
-       console.log(searchDogs)
         
 
     }, [allDogsFilter,location,queryState,searchDogs]);
@@ -128,7 +141,7 @@ function Home(props) {
 
 
     return (<div className={style.contenedorHome}>
-        
+        {Message.ShowCustomAlert===true && openCustomAlert()}
         {searchDogs.length === 0 && num === 0 && queryState === true ? <LoadingComponent /> : null}
         {allDogs.length === 0 && num === 0 && queryState === false ? <LoadingComponent /> : null}
         

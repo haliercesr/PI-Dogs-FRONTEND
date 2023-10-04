@@ -20,7 +20,7 @@ export const getDogs = () => {
                     payload: data1
                 }
             )
-        } catch (error) { window.alert(error.message) }
+        } catch (error) { throw Error(error.message) }
     }
 }
 
@@ -36,7 +36,7 @@ export const searchDogs = (raza) => {
                     payload: data1
                 }
             )
-        } catch (error) { window.alert(error.message) }
+        } catch (error) { throw Error(error.message) }
     }
 }
 
@@ -80,7 +80,7 @@ export const getTemperaments = () => {
                     payload: data
                 }
             )
-        } catch (error) { window.alert("Error al obtener la lista de temperamentos") }
+        } catch (error) { throw Error("Error al obtener la lista de temperamentos") }
     }}
 
     export const filterApi = (evento) => {
