@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import Card from '../card/card'
 import LoadingComponent from '../loading/loading';
 import Alert from '../alert/alert';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Home(props) {
     const { location, URLfrontend } = props;
@@ -69,10 +68,10 @@ function Home(props) {
         // Obtener la lista de temperamentos
         temper.length===0 && dispatch(getTemperaments())
         }catch(error){ (setMessage({ ShowCustomAlert: true, message: error.message }))}
-        setTemper( allDogsFilter)
+        setTemper(allDogsFilter)
         
 
-    }, [allDogsFilter,location,queryState,searchDogs,num]);
+    }, [allDogsFilter,location,queryState,searchDogs]);
 
        
  
@@ -135,9 +134,7 @@ function Home(props) {
         })
     }
 
-    const inicio=()=>{
-        setNum(0)
-    }
+    const inicio=()=>{setNum(0)}
 
 
 
@@ -169,11 +166,11 @@ function Home(props) {
         </div>
         {num !== 0 && allDogs.length === 0 && queryState === false && (<>
             <h2>No hay resultados</h2>
-            {<Link to='/home' onClick={inicio}>Volver al inicio</Link>}
+            <a href={`${URLfrontend}/home`} onClick={inicio}>Volver al inicio</a>
             </>)}
         {num !== 0 && searchDogs.length === 0 && queryState === true && (<>
             <h2>No hay resultados</h2>
-            {<Link to='/home' onClick={inicio}>Volver al inicio</Link>}
+            <a href={`${URLfrontend}/home`} onClick={inicio}>Volver al inicio</a>
             </>)}
 
         <div className={style.Home}>
