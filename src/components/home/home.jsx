@@ -68,7 +68,7 @@ function Home(props) {
         // Obtener la lista de temperamentos
         temper.length===0 && dispatch(getTemperaments())
         }catch(error){ (setMessage({ ShowCustomAlert: true, message: error.message }))}
-        num!==0 && setTemper(allDogsFilter)
+        setTemper(allDogsFilter)
         
 
     }, [allDogsFilter,location,queryState,searchDogs]);
