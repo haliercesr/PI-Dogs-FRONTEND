@@ -52,7 +52,7 @@ function Create(props) {
 
       SetAllTemperaments(allDogsFilter)
 
-   }, []);
+   }, [Message]);
 
    const handleSubmit = async (e) => {
       e.preventDefault()   //evitar que se recarge la pagina 
