@@ -37,7 +37,7 @@ function Create(props) {
    });
 
    function openCustomAlert() {
-      console.log(string)
+      console.log(Message.message)
     return <Alert
     message={Message.message}
     onClose={closeCustomAlert}
@@ -83,26 +83,22 @@ function Create(props) {
 
             console.log(data)
             if (data) {
-               openCustomAlert()
-               setMessage({ ...Message, message: "El perro se creo con exito!" })
+               setMessage({ ShowCustomAlert: true, message: "El perro se creo con exito!"  });
                dispatch(getDogs())
 
             } else {
-               openCustomAlert()
-               setMessage({ ...Message, message: "El perro ya se encuentra creado, por favor elije otro nombre" })
-
+               setMessage({ ShowCustomAlert: true, message: "El perro ya se encuentra creado, por favor elije otro nombre"  });
             }
 
 
          } else if (user.name !== '') {
-            openCustomAlert()
-               setMessage({ ...Message, message: "El formulario contiene errores" })
+            setMessage({ ShowCustomAlert: true, message: "El formulario contiene errores"  });
          }
 
 
 
 
-      } catch (error) { window.alert(error.message) }
+      } catch (error) {setMessage({ ShowCustomAlert: true, message: error.message })}
    }
 
 
@@ -132,9 +128,7 @@ function Create(props) {
    }
 
    const volverHome = () => {
-
       history.push('/home');
-
    };
 
 
