@@ -37,8 +37,11 @@ function Create(props) {
    });
 
    function openCustomAlert() {
-      setMessage({ ...Message,ShowCustomAlert: true })
-      
+      console.log(string)
+    return <Alert
+    message={Message.message}
+    onClose={closeCustomAlert}
+ />    
    }
 
 
@@ -60,8 +63,8 @@ function Create(props) {
 
       try {
          if (user.name === '') {
-            setMessage({ ...Message, message: 'Por favor completar el formulario' })
-            openCustomAlert()}
+            setMessage({ ShowCustomAlert: true, message: 'Por favor completar el formulario' });
+         }
 
          const { name, heightMin, heightMax, weightMin, weightMax, life_span, selectedTemperaments, image } = user
          const valuesArray = Object.values(errors).join() //tomo los valores de errors
@@ -158,11 +161,7 @@ function Create(props) {
      };*/
 
    return (<div className={style.containerCreate}>
-      {console.log(Message.message)}
-      { Message.ShowCustomAlert && <Alert
-         message="Message.message"
-         onClose={closeCustomAlert}
-      />}
+      {Message.ShowCustomAlert===true && openCustomAlert()}
       <form className={style.RegForms} onSubmit={handleSubmit}>
 
          <div className={style.FormConteiner}>
