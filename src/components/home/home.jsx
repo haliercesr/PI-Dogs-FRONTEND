@@ -72,7 +72,7 @@ function Home(props) {
         setTemper( allDogsFilter)
         
 
-    }, [allDogsFilter,location,queryState,searchDogs]);
+    }, [allDogsFilter,location,queryState,searchDogs,num]);
 
        
  
@@ -137,7 +137,6 @@ function Home(props) {
 
     const inicio=()=>{
         setNum(0)
-    return <Link to='/home'>Volver al inicio</Link>
     }
 
 
@@ -170,11 +169,11 @@ function Home(props) {
         </div>
         {num !== 0 && allDogs.length === 0 && queryState === false && (<>
             <h2>No hay resultados</h2>
-            {inicio}
+            {<Link to='/home' onClick={inicio}>Volver al inicio</Link>}
             </>)}
         {num !== 0 && searchDogs.length === 0 && queryState === true && (<>
             <h2>No hay resultados</h2>
-            {inicio}
+            {<Link to='/home' onClick={inicio}>Volver al inicio</Link>}
             </>)}
 
         <div className={style.Home}>
