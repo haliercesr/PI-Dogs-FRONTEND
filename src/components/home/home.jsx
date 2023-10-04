@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import Card from '../card/card'
 import LoadingComponent from '../loading/loading';
 import Alert from '../alert/alert';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Home(props) {
     const { location, URLfrontend } = props;
@@ -134,7 +135,10 @@ function Home(props) {
         })
     }
 
-    const inicio=()=>{setNum(0)}
+    const inicio=()=>{
+        setNum(0)
+    return <Link to='/home'>Volver al inicio</Link>
+    }
 
 
 
@@ -166,11 +170,11 @@ function Home(props) {
         </div>
         {num !== 0 && allDogs.length === 0 && queryState === false && (<>
             <h2>No hay resultados</h2>
-            <a href={`${URLfrontend}/home`} onClick={inicio}>Volver al inicio</a>
+            {inicio}
             </>)}
         {num !== 0 && searchDogs.length === 0 && queryState === true && (<>
             <h2>No hay resultados</h2>
-            <a href={`${URLfrontend}/home`} onClick={inicio}>Volver al inicio</a>
+            {inicio}
             </>)}
 
         <div className={style.Home}>
