@@ -95,9 +95,10 @@ function Home(props) {
     }
 
     function handleOrder(e) {
-
+         
         const types = queryState ? "searchDogs" : "allDogs"
         const evento = e.target.value
+        setMessage({ resetSelectOrder: evento})
         if (evento === 'A' || evento === 'D') dispatch(orderDogs([evento, "name", types]))
         if (evento === 'AA' || evento === 'DD') dispatch(orderDogs([evento, "weight", types]))
         setNum(num + 1)// CON ESTO PUEDO HACER QUE SE ACTUALIZE EL USEEFFECT Y ME RENDERICE EL NUEVO ALLDOGS EN ORDEN ALFABETICO
@@ -108,17 +109,19 @@ function Home(props) {
     const handleFilter = (e) => {
 
         const evento = e.target.value
+        setMessage({ resetSelectFilter: evento})
         dispatch(filterDogs(String(evento)))
         setNum(num + 1)
-
 
     }
 
     const handleFilterFuente = (e) => {
 
         const evento = e.target.value
+        setMessage({ resetSelectFuente: evento})
         dispatch(filterApi(evento))
         setNum(num + 1)
+
     }
 
 
