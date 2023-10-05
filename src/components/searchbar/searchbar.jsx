@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import Alert from '../alert/alert';
 
 function SearchBar(props) {
-  const { location } = props;
+  const { location, num, setNum } = props;
   const pathname = location.pathname;
   const [query, setQuery] = useState('');
   const history = useHistory();
@@ -37,13 +37,13 @@ function SearchBar(props) {
     setQuery(event.target.value);
   };
 
-  const handleSearch = async () => {
+  const handleSearch = () => {
     dispatch(queryDogs(true))
-    await dispatch(searchDogs("reset"))
+    dispatch(searchDogs("reset"))
+    setNum(0)
 
     try{
-
-    await dispatch(searchDogs(query));
+    dispatch(searchDogs(query));
     
     }catch(error){setMessage({ ShowCustomAlert: true, message: error.message })}
   };
@@ -68,7 +68,7 @@ function SearchBar(props) {
       </button>
       <input
         type="text"
-        placeholder="Buscar raza ..."
+        placeholder="Buscar Toy, Doberman, ..."
         value={query}
         onChange={handleInputChange}
         className="search-input" 

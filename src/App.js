@@ -12,7 +12,7 @@ function App() {
 //const URLfrontend="http://localhost:3000/"
 const URLfrontend="https://dogs-page.onrender.com"
 
-
+const [num, setNum] = useState(0)
 
 
 
@@ -21,10 +21,10 @@ const URLfrontend="https://dogs-page.onrender.com"
      
     <Router>
       <div className="App">
-        <Searchbar></Searchbar>
+        <Searchbar num={num} setNum={setNum}></Searchbar>
         <Switch>                           
         <Route exact path="/" component={Form} />  
-        <Route exact path="/home" render={(props) => <Home {...props} URLfrontend={URLfrontend} />}/>
+        <Route exact path="/home" render={(props) => <Home {...props} num={num} setNum={setNum} URLfrontend={URLfrontend} />}/>
         <Route exact path="/detail/:id" component={Detail} />
         <Route exact path="/create" component={Create} />
         </Switch>

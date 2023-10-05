@@ -10,7 +10,7 @@ import Alert from '../alert/alert';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Home(props) {
-    const { location, URLfrontend } = props;
+    const { location, URLfrontend, num, setNum } = props;
     const pathname = location.pathname;
     const allDogs = useSelector(state => state.allDogs)
     const searchDogs = useSelector(state => state.searchDogs)
@@ -18,7 +18,6 @@ function Home(props) {
     const allDogsFilter = useSelector(state => state.allDogsFilter)
     const dispatch = useDispatch()
     const [numberpage, setNumberpage] = useState(1)
-    const [num, setNum] = useState(0)
     const [temper, setTemper] = useState([])
     const [Message, setMessage] = useState({
         ShowCustomAlert: false,
