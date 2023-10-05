@@ -1,12 +1,13 @@
 import style from '../home/home.module.css';
 import { withRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getDogs, orderDogs, filterDogs, getTemperaments,filterApi } from '../redux/actions/actions';
+import { getDogs, orderDogs, filterDogs, getTemperaments, filterApi } from '../redux/actions/actions';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Card from '../card/card'
 import LoadingComponent from '../loading/loading';
 import Alert from '../alert/alert';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Home(props) {
     const { location, URLfrontend } = props;
@@ -22,21 +23,21 @@ function Home(props) {
     const [Message, setMessage] = useState({
         ShowCustomAlert: false,
         message: "",
-     });
+    });
 
-     function openCustomAlert() {
+    function openCustomAlert() {
         console.log(Message.message)
-      return <Alert
-      message={Message.message}
-      onClose={closeCustomAlert}
-   />    
-     }
-  
-  
-  
-     const closeCustomAlert = () => {
+        return <Alert
+            message={Message.message}
+            onClose={closeCustomAlert}
+        />
+    }
+
+
+
+    const closeCustomAlert = () => {
         setMessage({ ...Message, ShowCustomAlert: false })
-     };
+    };
 
     const nextpage = () => {
         setNumberpage(numberpage + 1)
@@ -63,18 +64,18 @@ function Home(props) {
 
     useEffect(() => {
         //si lo pongo directamente en el return me da error porque es una funcion asincronica y tarda en completarse
-        try{
-        allDogs.length===0 && dispatch(getDogs())
-        // Obtener la lista de temperamentos
-        temper.length===0 && dispatch(getTemperaments())
-        }catch(error){ (setMessage({ ShowCustomAlert: true, message: error.message }))}
+        try {
+            allDogs.length === 0 && dispatch(getDogs())
+            // Obtener la lista de temperamentos
+            temper.length === 0 && dispatch(getTemperaments())
+        } catch (error) { (setMessage({ ShowCustomAlert: true, message: error.message })) }
         setTemper(allDogsFilter)
-        
 
-    }, [allDogsFilter,location,queryState,searchDogs]);
 
-       
- 
+    }, [allDogsFilter, location, queryState, searchDogs]);
+
+
+
 
     const pagination = () => {
         const data = queryState ? searchDogs : allDogs;
@@ -91,7 +92,7 @@ function Home(props) {
     }
 
     function handleOrder(e) {
-       
+
         const types = queryState ? "searchDogs" : "allDogs"
         const evento = e.target.value
         if (evento === 'A' || evento === 'D') dispatch(orderDogs([evento, "name", types]))
@@ -102,24 +103,24 @@ function Home(props) {
     }
 
     const handleFilter = (e) => {
-       
+
         const evento = e.target.value
         dispatch(filterDogs(String(evento)))
-        setNum(num+1)
-        
+        setNum(num + 1)
+
 
     }
 
     const handleFilterFuente = (e) => {
-       
+
         const evento = e.target.value
         dispatch(filterApi(evento))
-        setNum(num+1)
+        setNum(num + 1)
     }
 
 
-    const cards=(searchDogs)=>{
-      
+    const cards = (searchDogs) => {
+
         return arraygroup(searchDogs)[numberpage - 1].map((element) => {
             console.log(element.id)
             return <Card
@@ -134,16 +135,22 @@ function Home(props) {
         })
     }
 
-    const inicio=()=>{setNum(0)}
+    const inicio = () => {
+        setNum(0)
+        try {
+            allDogs.length === 0 && dispatch(getDogs())
+        } catch (error) { (setMessage({ ShowCustomAlert: true, message: error.message })) }
+
+    }
 
 
 
 
     return (<div className={style.contenedorHome}>
-        {Message.ShowCustomAlert===true && openCustomAlert()}
+        {Message.ShowCustomAlert === true && openCustomAlert()}
         {searchDogs.length === 0 && num === 0 && queryState === true ? <LoadingComponent /> : null}
         {allDogs.length === 0 && num === 0 && queryState === false ? <LoadingComponent /> : null}
-        
+
         <div>
             <h3>Filtrar por:</h3>
             <div >
@@ -166,20 +173,20 @@ function Home(props) {
         </div>
         {num !== 0 && allDogs.length === 0 && queryState === false && (<>
             <h2>No hay resultados</h2>
-            <a href={`${URLfrontend}/home`} onClick={inicio}>Volver al inicio</a>
-            </>)}
+            <Link to='/home' onClick={inicio}>Volver al inicio</Link>
+        </>)}
         {num !== 0 && searchDogs.length === 0 && queryState === true && (<>
             <h2>No hay resultados</h2>
-            <a href={`${URLfrontend}/home`} onClick={inicio}>Volver al inicio</a>
-            </>)}
+            <Link to='/home' onClick={inicio}>Volver al inicio</Link>
+        </>)}
 
         <div className={style.Home}>
 
             {searchDogs.length > 0 && queryState === true && cards(searchDogs)}
             {allDogs.length > 0 && queryState === false && cards(allDogs)}
 
-            {allDogs.length > 0 && queryState===false && pagination()}
-            {searchDogs.length>0 && queryState===true && pagination()}
+            {allDogs.length > 0 && queryState === false && pagination()}
+            {searchDogs.length > 0 && queryState === true && pagination()}
         </div>
     </div>)
 }
