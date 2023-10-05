@@ -23,6 +23,9 @@ function Home(props) {
     const [Message, setMessage] = useState({
         ShowCustomAlert: false,
         message: "",
+        resetSeletOrder:"A",
+        resetSelectFilter:"Todos",
+        resetSelectFuente:"Todos",
     });
 
     function openCustomAlert() {
@@ -137,6 +140,7 @@ function Home(props) {
 
     const inicio = () => {
         setNum(0)
+        setMessage({ resetSelectFilter: "A", resetSeletOrder: "Todos",resetSelectFuente: "Todos" })
         try {
             allDogs.length === 0 && dispatch(getDogs())
         } catch (error) { (setMessage({ ShowCustomAlert: true, message: error.message })) }
@@ -154,17 +158,17 @@ function Home(props) {
         <div>
             <h3>Filtrar por:</h3>
             <div >
-                <select onChange={handleOrder}>
+                <select value={Message.resetSeletOrder} onChange={handleOrder}>
                     <option value="A">A-Z</option>
                     <option value="D">Z-A</option>
                     <option value="AA">Mayor peso</option>
                     <option value="DD">Menor peso</option>
                 </select>
-                <select onChange={handleFilter}>
+                <select value={Message.resetSelectFilter} onChange={handleFilter}>
                     <option value="Todos">Todos</option>
                     {temper.length > 0 && (temper.map(tem => { return <option value={tem}>{tem}</option> }))}
                 </select>
-                <select onChange={handleFilterFuente}>
+                <select value={Message.resetSelectFuente} onChange={handleFilterFuente}>
                     <option value="Todos">Todos</option>
                     <option value="API">API</option>
                     <option value="BDD">BASE DE DATOS</option>
