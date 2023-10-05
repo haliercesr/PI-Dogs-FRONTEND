@@ -37,10 +37,14 @@ function SearchBar(props) {
     setQuery(event.target.value);
   };
 
-  const handleSearch = () => {
-    try{
-    dispatch(searchDogs(query));
+  const handleSearch = async () => {
     dispatch(queryDogs(true))
+    await dispatch(searchDogs("reset"))
+
+    try{
+
+    await dispatch(searchDogs(query));
+    
     }catch(error){setMessage({ ShowCustomAlert: true, message: error.message })}
   };
 

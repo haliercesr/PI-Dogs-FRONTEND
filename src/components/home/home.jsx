@@ -157,7 +157,7 @@ function Home(props) {
         {Message.ShowCustomAlert === true && openCustomAlert()}
         {searchDogs.length === 0 && num === 0 && queryState === true ? <LoadingComponent /> : null}
         {allDogs.length === 0 && num === 0 && queryState === false ? <LoadingComponent /> : null}
-
+        
         <div>
             <h3>Filtrar por:</h3>
             <div >
@@ -188,7 +188,7 @@ function Home(props) {
         </>)}
 
         <div className={style.Home}>
-
+            {console.log(searchDogs)}
             {searchDogs.length > 0 && queryState === true && cards(searchDogs)}
             {allDogs.length > 0 && queryState === false && cards(allDogs)}
 

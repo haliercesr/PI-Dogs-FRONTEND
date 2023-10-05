@@ -27,7 +27,17 @@ export const getDogs = () => {
 export const searchDogs = (raza) => {
     return async function (dispatch) {
 
+        if (raza==="reset"){          //con esto, el estado SEARCHDOGS queda vacio y aparece el loading
+            return dispatch(
+                {
+                    type: SEARCH_DOGS,
+                    payload: []
+                }
+            ) 
+        }
+        
         try {
+          
             const { data } = await axios.get(`${URL}/dogs/name?name=${raza}`)
             const data1=filtrarDogsCreados(data) //filtro los datos del server para los perros creados en la BBD, TENGO QUE HACERLO EN EL SERVER Y NO EN EL FONTEND
             return dispatch(
