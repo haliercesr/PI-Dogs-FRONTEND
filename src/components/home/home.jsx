@@ -1,7 +1,7 @@
 import style from '../home/home.module.css';
 import { withRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getDogs, orderDogs, filterDogs, getTemperaments, filterApi } from '../redux/actions/actions';
+import { getDogs, orderDogs, filterDogs, getTemperaments, filterApi, queryDogs } from '../redux/actions/actions';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Card from '../card/card'
@@ -143,6 +143,7 @@ function Home(props) {
 
     const inicio = () => {
         setNum(0)
+        dispatch(queryDogs(false))
         setMessage({ resetSelectFilter: "A", resetSeletOrder: "Todos",resetSelectFuente: "Todos" })
         try {
             allDogs.length === 0 && dispatch(getDogs())
