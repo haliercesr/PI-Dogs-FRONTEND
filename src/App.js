@@ -6,6 +6,7 @@ import Home from '../src/components/home/home';
 import Detail from './components/detail/detail';
 import Create from './components/create/create';
 import Searchbar from './components/searchbar/searchbar';
+import { useState } from 'react';
 
 function App() {
 
