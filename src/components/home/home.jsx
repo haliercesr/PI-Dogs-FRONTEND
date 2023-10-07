@@ -185,6 +185,10 @@ function Home(props) {
             <h2>No hay resultados</h2>
             <Link to='/home' onClick={inicio}>Volver al inicio</Link>
         </>)}
+        {searchDogs[0]==="Sin resutados" && (<>
+            <h2>No hay resultados</h2>
+            <Link to='/home' onClick={inicio}>Volver al inicio</Link>
+        </>)}
 
         <div className={style.Home}>
             {console.log(searchDogs)}

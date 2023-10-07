@@ -40,7 +40,7 @@ export const searchDogs = (raza) => {
           
             const { data } = await axios.get(`${URL}/dogs/name?name=${raza}`)
             
-            const data1=data==="Sin resutados"?[]:filtrarDogsCreados(data) //filtro los datos del server para los perros creados en la BBD, TENGO QUE HACERLO EN EL SERVER Y NO EN EL FONTEND
+            const data1=data==="Sin resutados"?["Sin resutados"]:filtrarDogsCreados(data) //filtro los datos del server para los perros creados en la BBD, TENGO QUE HACERLO EN EL SERVER Y NO EN EL FONTEND
             console.log(data1)
             return dispatch(
                 {
