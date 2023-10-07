@@ -127,7 +127,6 @@ function Home(props) {
     const cards = (searchDogs) => {
 
         return arraygroup(searchDogs)[numberpage - 1].map((element) => {
-            console.log(element.id)
             return <Card
                 key={element.id}
                 id={element.id}
@@ -189,6 +188,8 @@ function Home(props) {
 
         <div className={style.Home}>
             {console.log(searchDogs)}
+            {console.log(queryState)}
+            {console.log(num)}
             {searchDogs.length > 0 && queryState === true && cards(searchDogs)}
             {allDogs.length > 0 && queryState === false && cards(allDogs)}
 
