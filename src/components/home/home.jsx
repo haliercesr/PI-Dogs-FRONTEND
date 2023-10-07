@@ -1,8 +1,7 @@
 import style from '../home/home.module.css';
 import { withRouter } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { getDogs, orderDogs, filterDogs, getTemperaments, filterApi, queryDogs } from '../redux/actions/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Card from '../card/card'
 import LoadingComponent from '../loading/loading';
