@@ -7,11 +7,11 @@ import Detail from './components/detail/detail';
 import Create from './components/create/create';
 import Searchbar from './components/searchbar/searchbar';
 import { useState } from 'react';
+import { URLfrontend,URLSERVER } from './configURL';
 
 function App() {
 
-//const URLfrontend="http://localhost:3000/"
-const URLfrontend="https://dogs-page.onrender.com"
+
 
 const [num, setNum] = useState(0)
 
@@ -27,7 +27,7 @@ const [num, setNum] = useState(0)
         <Route exact path="/" component={Form} />  
         <Route exact path="/home" render={(props) => <Home {...props} num={num} setNum={setNum} URLfrontend={URLfrontend} />}/>
         <Route exact path="/detail/:id" component={Detail} />
-        <Route exact path="/create" component={Create} />
+        <Route exact path="/create" render={(props) => <Create {...props}  URLSERVER={URLSERVER} />}/>
         </Switch>
       </div>
     </Router>

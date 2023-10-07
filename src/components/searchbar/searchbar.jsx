@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './searchbar.css'; 
 import { withRouter,useHistory } from 'react-router-dom';
 import { searchDogs,queryDogs } from '../redux/actions/actions';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Alert from '../alert/alert';
 
 function SearchBar(props) {
@@ -11,7 +11,6 @@ function SearchBar(props) {
   const [query, setQuery] = useState('');
   const history = useHistory();
   const dispatch = useDispatch()
-  const searchDogs1 = useSelector(state => state.searchDogs)
 
   const [Message, setMessage] = useState({
     ShowCustomAlert: false,
@@ -44,7 +43,6 @@ function SearchBar(props) {
     
     try{
     dispatch(searchDogs(query));
-    searchDogs1[0]==="Sin resutados"?setNum(1):setNum(0)
 
     }catch(error){setMessage({ ShowCustomAlert: true, message: error.message })}
   };

@@ -1,16 +1,13 @@
 import { GET_DOGS, SEARCH_DOGS, QUERY_DOGS, ORDER, FILTER, TEMPERAMENTS, FILTERbdd } from './types';
 import axios from 'axios';
+import { URLSERVER } from '../../../configURL';
 const {filtrarDogsCreados}=require('../../utils/filtrarDogsCreados')
-
-//const URL = 'http://localhost:3001'
-const URL = 'https://dogs-server-c51j.onrender.com'
 
 export const getDogs = () => {
     return async function (dispatch) {
 
         try {
-            console.log(`${URL}/dogs`)
-            const { data } = await axios.get(`${URL}/dogs`)
+            const { data } = await axios.get(`${URLSERVER}/dogs`)
 
             const data1=filtrarDogsCreados(data) //filtro los datos del server para los perros creados en la BBD, TENGO QUE HACERLO EN EL SERVER Y NO EN EL FONTEND
             
@@ -38,7 +35,7 @@ export const searchDogs = (raza) => {
         
         try {
           
-            const { data } = await axios.get(`${URL}/dogs/name?name=${raza}`)
+            const { data } = await axios.get(`${URLSERVER}/dogs/name?name=${raza}`)
             
             const data1=data==="Sin resutados"?["Sin resutados"]:filtrarDogsCreados(data) //filtro los datos del server para los perros creados en la BBD, TENGO QUE HACERLO EN EL SERVER Y NO EN EL FONTEND
             console.log(data1)
@@ -85,7 +82,7 @@ export const getTemperaments = () => {
     return async function (dispatch) {
 
         try {
-            const { data } = await axios.get(`${URL}/temperaments`)
+            const { data } = await axios.get(`${URLSERVER}/temperaments`)
             return dispatch(
                 {
                     type: TEMPERAMENTS,

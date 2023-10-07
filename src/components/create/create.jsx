@@ -10,8 +10,7 @@ import Alert from '../alert/alert';
 
 
 function Create(props) {
-   //const URL = 'http://localhost:3001'
-   const URL = 'https://dogs-server-c51j.onrender.com'
+   const {URLSERVER} = props
    const history = useHistory();
    const dispatch = useDispatch()
    const allDogsFilter = useSelector(state => state.allDogsFilter)
@@ -81,7 +80,7 @@ function Create(props) {
                selectedTemperaments,
             }
 
-            const { data } = await axios.post(`${URL}/dogs/`, userSubmit)
+            const { data } = await axios.post(`${URLSERVER}/dogs/`, userSubmit)
 
             console.log(data)
             if (data) {
