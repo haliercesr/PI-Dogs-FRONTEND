@@ -41,11 +41,11 @@ function SearchBar(props) {
   const handleSearch = () => {
     dispatch(queryDogs(true))
     dispatch(searchDogs("reset"))
-    searchDogs1[0]==="Sin resutados"?setNum(1):setNum(0)
-
+    
     try{
     dispatch(searchDogs(query));
-    
+    searchDogs1[0]==="Sin resutados"?setNum(1):setNum(0)
+
     }catch(error){setMessage({ ShowCustomAlert: true, message: error.message })}
   };
 
