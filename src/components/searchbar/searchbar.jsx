@@ -11,6 +11,7 @@ function SearchBar(props) {
   const [query, setQuery] = useState('');
   const history = useHistory();
   const dispatch = useDispatch()
+  const searchDogs = useSelector(state => state.searchDogs)
 
   const [Message, setMessage] = useState({
     ShowCustomAlert: false,
@@ -40,7 +41,7 @@ function SearchBar(props) {
   const handleSearch = () => {
     dispatch(queryDogs(true))
     dispatch(searchDogs("reset"))
-    setNum(0)
+    searchDogs[0]==="Sin resutados"?setNum(1):setNum(0)
 
     try{
     dispatch(searchDogs(query));
