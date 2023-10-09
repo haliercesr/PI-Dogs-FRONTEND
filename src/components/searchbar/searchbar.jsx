@@ -38,7 +38,6 @@ function SearchBar(props) {
   };
 
   const handleKeyDown = (event) => {
-    console.log("holaaa")
     if (event.key === 'Enter') {
       // Si se presiona "Enter" mientras el botón está enfocado, llama a la función handleClick
       handleSearch();
@@ -52,7 +51,7 @@ function SearchBar(props) {
     
     try{
     dispatch(searchDogs(query));
-    
+    setQuery('')
     }catch(error){setMessage({ ShowCustomAlert: true, message: error.message })}
   };
 
