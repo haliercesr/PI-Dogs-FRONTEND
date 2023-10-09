@@ -11,12 +11,7 @@ import { URLfrontend,URLSERVER } from './configURL';
 
 function App() {
 
-
-
 const [num, setNum] = useState(0)
-
-
-
 
   return (                                         //Coloco "exact" para ue la ruta sea exacta, caso contrario si tengo:  <Route path="/" component={Form} />, esto significa que cuando la URL sea / o cualquier otra ruta que comience con /, el componente Form se renderizará porque la coincidencia es parcial.
      

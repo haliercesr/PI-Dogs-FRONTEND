@@ -152,11 +152,16 @@ function Home(props) {
 
 
     return (<div className={style.contenedorHome}>
+        {searchDogs[0]==="Sin resutados" && (<>
+            <h2>No hay resultados</h2>
+            <Link to='/home' onClick={inicio}>Volver al inicio</Link>
+        </>)}
+
         {Message.ShowCustomAlert === true && openCustomAlert()}
         {searchDogs.length === 0 && num === 0 && queryState === true ? <LoadingComponent /> : null}
         {allDogs.length === 0 && num === 0 && queryState === false ? <LoadingComponent /> : null}
         
-        <div>
+        {searchDogs[0]!=="Sin resutados" && <div>
             <h3>Filtrar por:</h3>
             <div >
                 <select value={Message.resetSeletOrder} onChange={handleOrder}>
@@ -175,7 +180,7 @@ function Home(props) {
                     <option value="BDD">BASE DE DATOS</option>
                 </select>
             </div>
-        </div>
+        </div>}
         {num !== 0 && allDogs.length === 0 && queryState === false && (<>
             <h2>No hay resultados</h2>
             <Link to='/home' onClick={inicio}>Volver al inicio</Link>
@@ -186,14 +191,12 @@ function Home(props) {
         </>)}
 
         <div className={style.Home}>
-            {console.log(searchDogs)}
-            {console.log(queryState)}
-            {console.log(num)}
-            {searchDogs.length > 0 && queryState === true && cards(searchDogs)}
+        
+            {searchDogs.length > 0 && queryState === true && searchDogs[0]!=="Sin resutados" && cards(searchDogs)}
             {allDogs.length > 0 && queryState === false && cards(allDogs)}
 
             {allDogs.length > 0 && queryState === false && pagination()}
-            {searchDogs.length > 0 && queryState === true && pagination()}
+            {searchDogs.length > 0 && queryState === true && searchDogs[0]!=="Sin resutados" && pagination()}
         </div>
     </div>)
 }

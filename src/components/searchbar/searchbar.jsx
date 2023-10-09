@@ -37,13 +37,22 @@ function SearchBar(props) {
     setQuery(event.target.value);
   };
 
+  const handleKeyDown = (event) => {
+    console.log("holaaa")
+    if (event.key === 'Enter') {
+      // Si se presiona "Enter" mientras el botón está enfocado, llama a la función handleClick
+      handleSearch();
+    }
+  };
+
   const handleSearch = () => {
+    
     dispatch(queryDogs(true))
     dispatch(searchDogs("reset"))
     
     try{
     dispatch(searchDogs(query));
-
+    
     }catch(error){setMessage({ ShowCustomAlert: true, message: error.message })}
   };
 
@@ -71,8 +80,14 @@ function SearchBar(props) {
         value={query}
         onChange={handleInputChange}
         className="search-input" 
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
       />
-      <button onClick={handleSearch} className="search-button">
+      <button 
+      onClick={handleSearch} 
+      className="search-button"
+      
+      >
         Buscar
       </button>
       <button onClick={exitForm} className="search-button">
