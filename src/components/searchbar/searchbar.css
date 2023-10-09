@@ -8,7 +8,7 @@
   align-items: center;
   padding-top: 20px; /* Espacio superior para separar de otros elementos */
   padding-bottom: 10px;
-  background-image: linear-gradient(to right top, #6d361a, #91501e, #b26d1e, #d18e1a, #ebb212);
+  background-image: linear-gradient(to left top, #c06300, #c36e00, #c67800, #c98300, #cb8d00);
   width: 100%;
 }
 
@@ -40,9 +40,14 @@
 
 /* Estilo para el botón cuando se coloca el cursor sobre él */
 .search-button:hover {
-  color:rgba(131, 127, 127, 0.699);
+  color:rgb(209, 207, 207);
   transition: all 0.3s ease-in-out;
   
+}
+
+.search-button:not(:hover){           /*PARA CUANDO EL BOTON SE ALEJA DEL MOUSE*/
+  color: white;
+  transition: all 0.4s ease-in-out;
 }
 
   }

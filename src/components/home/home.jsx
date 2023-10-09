@@ -27,7 +27,6 @@ function Home(props) {
     });
 
     function openCustomAlert() {
-        console.log(Message.message)
         return <Alert
             message={Message.message}
             onClose={closeCustomAlert}
@@ -64,12 +63,11 @@ function Home(props) {
 
 
     useEffect(() => {
-        //si lo pongo directamente en el return me da error porque es una funcion asincronica y tarda en completarse
-        try {
+     
             allDogs.length === 0 && dispatch(getDogs())
             // Obtener la lista de temperamentos
             temper.length === 0 && dispatch(getTemperaments())
-        } catch (error) { (setMessage({ ShowCustomAlert: true, message: error.message })) }
+
         setTemper(allDogsFilter)
 
 
