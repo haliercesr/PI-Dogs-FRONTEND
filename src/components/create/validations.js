@@ -4,7 +4,7 @@ export default function validations(user) {
 
     //VALIDACIONES NOMBRE
     if (!user.name) {
-        errors.name = "⚠️Porfavor ingresar un nombre";
+        errors.name = "⚠️Por favor ingresar un nombre";
     } else if (!regexNombreSinNumero.test(user.name)) {
         errors.name = "⚠️No debe contener numeros"
     } else { errors.name = "" }
